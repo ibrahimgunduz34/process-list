@@ -1,6 +1,6 @@
 {
-  "name": "process-list",
-  "version": "v1.0.3",
+  "name": "ibrahimgunduz34/process-list",
+  "version": "v1.0.4",
   "description": "",
   "main": "src/process-list.js",
   "scripts": {
