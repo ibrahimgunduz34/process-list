@@ -1,3 +1,5 @@
+[![Build Status](https://app.travis-ci.com/ibrahimgunduz34/process-list.svg?branch=master)](https://app.travis-ci.com/ibrahimgunduz34/process-list)
+
 # ProcessList
 
 It's a library that simply wrap the `ps` command in order to access the active process list from your application.
