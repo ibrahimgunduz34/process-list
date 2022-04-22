@@ -1,6 +1,6 @@
 {
-  "name": "ibrahimgunduz34/process-list",
-  "version": "v1.0.4",
+  "name": "process-list",
+  "version": "v1.0.5",
   "description": "",
   "main": "src/process-list.js",
   "scripts": {
@@ -14,5 +14,9 @@
     "chai-as-promised": "^7.1.1",
     "mocha": "^9.2.2",
     "sinon": "^13.0.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ibrahimgunduz34/process-list.git"
   }
 }
