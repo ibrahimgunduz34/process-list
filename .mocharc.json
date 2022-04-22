@@ -1,0 +1,5 @@
+{
+  "color": true,
+  "forbid-only": true,
+  "spec": ["tests/*.spec.js"]
+}
