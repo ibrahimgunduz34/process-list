@@ -1,4 +1,4 @@
-[![Build Status](https://app.travis-ci.com/ibrahimgunduz34/process-list.svg?branch=master)](https://app.travis-ci.com/ibrahimgunduz34/process-list)
+[![Node.js Package](https://github.com/ibrahimgunduz34/process-list/actions/workflows/npm-publish.yml/badge.svg)](https://github.com/ibrahimgunduz34/process-list/actions/workflows/npm-publish.yml)
 
 # ProcessList
 
