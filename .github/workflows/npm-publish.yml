@@ -17,19 +17,20 @@ jobs:
         run: npm install
       - uses: actions/upload-artifact@v2
         with: 
-          name: dist
-          path: ./
+          name: node_modules
+          path: ./node_modules
 
   lint:
     needs: build
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
           node-version: 16
       - uses: actions/download-artifact@v2
         with:
-          name: dist
+          name: node_modules
       - name: Check code style
         run: npm run lint
   
@@ -37,12 +38,13 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
           node-version: 16
       - uses: actions/download-artifact@v2
         with:
-          name: dist
+          name: node_modules
       - name: Run the tests
         run: npm run test
 # name: Node.js Package
