@@ -15,33 +15,7 @@ jobs:
           node-version: 16
       - name: Install Dependencies
         run: npm install
-      - uses: actions/upload-artifact@v2
-        with: 
-          name: dist
-          path: .
-
-  lint:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 16
-      - uses: actions/download-artifact@v2
-        with:
-          name: dist
       - name: Check code style
         run: npm run lint
-  
-  test:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 16
-      - uses: actions/download-artifact@v2
-        with:
-          name: dist
       - name: Run the tests
         run: npm run test
