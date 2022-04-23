@@ -13,14 +13,12 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 16
-      - uses: actions/cache@v3
-        env:
-          cache-name: cache-node-modules
-        with:
-          path: node_moudles
-          key: ${{ runner.os }}-build-${{ env.cache-name }}
       - name: Install Dependencies
         run: npm install
+      - uses: actions/upload-artifact@v2
+        with: 
+          name: node_moudles
+          path: node_moudles
 
   lint:
     needs: build
@@ -30,7 +28,11 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 16
-      - run: npm run lint
+      - uses: actions/download-artifact@v2
+        with:
+          name: node_moudles
+      - name: Check code style
+        run: npm run lint
   
   test:
     needs: build
@@ -40,7 +42,11 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 16
-      - run: npm run test
+      - uses: actions/download-artifact@v2
+        with:
+          name: node_moudles
+      - name: Run the tests
+        run: npm run test
 # name: Node.js Package
 
 # on:
