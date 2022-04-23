@@ -6,6 +6,10 @@ It's a library that simply wrap the `ps` command in order to access the active p
 
 ## Installation:
 
+```bash
+$ npm install @ibrahimgunduz34/process-list
+```
+
 ## Reference:
 
 | Method                                 | Description                       |
