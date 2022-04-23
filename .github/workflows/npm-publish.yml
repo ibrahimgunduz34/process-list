@@ -17,20 +17,19 @@ jobs:
         run: npm install
       - uses: actions/upload-artifact@v2
         with: 
-          name: node_modules
-          path: ./node_modules
+          name: dist
+          path: .
 
   lint:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
           node-version: 16
       - uses: actions/download-artifact@v2
         with:
-          name: node_modules
+          name: dist
       - name: Check code style
         run: npm run lint
   
@@ -38,43 +37,11 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
           node-version: 16
       - uses: actions/download-artifact@v2
         with:
-          name: node_modules
+          name: dist
       - name: Run the tests
         run: npm run test
-# name: Node.js Package
-
-# on:
-#   release:
-#     types: [created]
-  
-
-# jobs:
-#   build:
-#     runs-on: ubuntu-latest
-#     steps:
-#       - uses: actions/checkout@v3
-#       - uses: actions/setup-node@v3
-#         with:
-#           node-version: 16
-#       - run: npm install
-#       - run: npm test
-
-#   publish-npm:
-#     needs: build
-#     runs-on: ubuntu-latest
-#     steps:
-#       - uses: actions/checkout@v3
-#       - uses: actions/setup-node@v3
-#         with:
-#           node-version: 16
-#           registry-url: https://registry.npmjs.org/
-#       - run: npm install
-#       - run: npm publish --access public
-#         env:
-#           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
