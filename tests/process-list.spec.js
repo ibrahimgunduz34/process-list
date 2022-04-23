@@ -1,16 +1,10 @@
-'use strict';
-
 const childProcess = require('child_process');
-const ProcessList = require('../src/process-list');
 const sinon = require('sinon');
 const { EventEmitter } = require('events');
+const { expect } = require('chai');
+const ProcessList = require('../src/process-list');
 const commandOutputGenerator = require('./utils/command-output-generator');
 const expectedResultGenerator = require('./utils/expected-result-generator');
-
-const chai = require('chai');
-const chaiAsPromised = require('chai-as-promised');
-
-const { expect } = chai;
 
 describe('ProcessList Tests', () => {
   let spawnStub;
@@ -28,7 +22,7 @@ describe('ProcessList Tests', () => {
 
   afterEach(() => {
     sandbox.restore();
-  })
+  });
 
   describe('Error Cases', () => {
     const dataProvider = [
@@ -40,24 +34,25 @@ describe('ProcessList Tests', () => {
         scenario: 'When the ps command is terminated with non-zero exit code',
         commandOutput: commandOutputGenerator.createFailedPsOutput(),
       },
-    ]
+    ];
 
-    dataProvider.forEach(scenario => {
+    dataProvider.forEach((scenario) => {
       describe(scenario.scenario, () => {
         it('should throw an error with the expected error message', (done) => {
           ProcessList.getList()
             .then(() => {
               done('It was expected that getList throws an error');
             })
-            .catch(error => {
-              expect(error).satisfy(error => error.message.startsWith('The ps command was exited with non-zero'));
+            .catch((error) => {
+              expect(error).satisfy((actualError) => actualError
+                .message.startsWith('The ps command was exited with non-zero'));
               done();
             });
-    
+
           spawnStub.stderr.emit('data', Buffer.from(scenario.commandOutput.message));
           spawnStub.emit('close', scenario.commandOutput.code);
         });
-      }) 
+      });
     });
   });
 
@@ -77,22 +72,22 @@ describe('ProcessList Tests', () => {
       },
     ];
 
-    dataProvider.forEach(scenario => {
+    dataProvider.forEach((scenario) => {
       describe(scenario.scenario, () => {
         it(scenario.expectation, (done) => {
-          ProcessList.getList({asArray: scenario.asArray})
-            .then(processes => {
+          ProcessList.getList({ asArray: scenario.asArray })
+            .then((processes) => {
               expect(processes).to.be.deep.equal(scenario.expectedResult);
               done();
             })
             .catch(done);
-      
+
           const output = commandOutputGenerator.createSuccessfulPsOutput();
-      
+
           spawnStub.stdout.emit('data', Buffer.from(output.message));
           spawnStub.emit('close', output.code);
-        })
-      })
-    })
+        });
+      });
+    });
   });
 });

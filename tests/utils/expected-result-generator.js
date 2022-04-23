@@ -1,6 +1,4 @@
-'use strict';
-
-const createGetListResultAsObject = () => {
+function createGetListResultAsObject() {
   return [
     {
       USER: 'ibrahimgunduz',
@@ -13,7 +11,7 @@ const createGetListResultAsObject = () => {
       STAT: 'R',
       STARTED: '9:47AM',
       TIME: '6:38.18',
-      COMMAND: '/Applications/iTerm.app/Contents/MacOS/iTerm2'
+      COMMAND: '/Applications/iTerm.app/Contents/MacOS/iTerm2',
     },
     {
       USER: '_coreaudiod',
@@ -26,20 +24,20 @@ const createGetListResultAsObject = () => {
       STAT: 'Ss',
       STARTED: '9Apr22',
       TIME: '101:51.90',
-      COMMAND: '/usr/sbin/coreaudiod'
-    }
+      COMMAND: '/usr/sbin/coreaudiod',
+    },
   ];
 }
 
-const createGetListResultAsList = () => {
+function createGetListResultAsList() {
   return [
     [
-      'USER',    'PID',
-      '%CPU',    '%MEM',
-      'VSZ',     'RSS',
-      'TT',      'STAT',
+      'USER', 'PID',
+      '%CPU', '%MEM',
+      'VSZ', 'RSS',
+      'TT', 'STAT',
       'STARTED', 'TIME',
-      'COMMAND'
+      'COMMAND',
     ],
     [
       'ibrahimgunduz',
@@ -52,7 +50,7 @@ const createGetListResultAsList = () => {
       'R',
       '9:47AM',
       '6:38.18',
-      '/Applications/iTerm.app/Contents/MacOS/iTerm2'
+      '/Applications/iTerm.app/Contents/MacOS/iTerm2',
     ],
     [
       '_coreaudiod',
@@ -65,12 +63,12 @@ const createGetListResultAsList = () => {
       'Ss',
       '9Apr22',
       '101:51.90',
-      '/usr/sbin/coreaudiod'
-    ]
+      '/usr/sbin/coreaudiod',
+    ],
   ];
 }
 
 module.exports = {
-  createGetListResultAsObject: createGetListResultAsObject,
-  createGetListResultAsList: createGetListResultAsList,
-}
+  createGetListResultAsObject,
+  createGetListResultAsList,
+};

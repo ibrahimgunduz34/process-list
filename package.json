@@ -1,17 +1,20 @@
 {
   "name": "@ibrahimgunduz34/process-list",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "It's a library that simply wrap the ps command in order to access the active process list from your application.",
   "main": "src/process-list.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "lint": "eslint -c .eslintrc.json ."
   },
   "keywords": [],
   "author": "Ibrahim Gunduz <ibrahimgunduz34@gmail.com>",
   "license": "ISC",
   "devDependencies": {
     "chai": "^4.3.6",
-    "chai-as-promised": "^7.1.1",
+    "eslint": "^8.14.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.26.0",
     "mocha": "^9.2.2",
     "sinon": "^13.0.2"
   },
