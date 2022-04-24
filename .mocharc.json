@@ -1,5 +1,6 @@
 {
   "color": true,
   "forbid-only": true,
+  "inline-diffs": true,
   "spec": ["tests/*.spec.js"]
 }

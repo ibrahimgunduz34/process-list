@@ -1,4 +1,5 @@
 const childProcess = require('child_process');
+const { CommandExecutionError } = require('./exceptions');
 
 const DEFAULT_OPTIONS = ['aux'];
 
@@ -20,13 +21,12 @@ const ProcessList = {
       const output = Buffer.concat(chunks);
 
       if (code !== 0) {
-        const errMsg = `The ps command was exited with non-zero(${code}) `
-                          + 'exit code.\n\n'
-                          + 'Output:\n'
-                          + '-----------------------\n'
-                          + `${output.toString()}`;
-
-        reject(new Error(errMsg));
+        const error = new CommandExecutionError(
+          'The ps command execution was failed with non-zero exit code',
+          output.toString(),
+          code,
+        );
+        reject(error);
       } else {
         resolve(output);
       }
