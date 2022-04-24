@@ -1,4 +1,4 @@
-[![Node.js Package](https://github.com/ibrahimgunduz34/process-list/actions/workflows/npm-publish.yml/badge.svg)](https://github.com/ibrahimgunduz34/process-list/actions/workflows/npm-publish.yml)
+[![Npm Publish Workflow](https://github.com/ibrahimgunduz34/process-list/actions/workflows/npm-publish.yml/badge.svg)](https://github.com/ibrahimgunduz34/process-list/actions/workflows/npm-publish.yml)
 
 # ProcessList
 
