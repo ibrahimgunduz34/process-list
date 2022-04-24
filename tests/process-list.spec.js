@@ -9,7 +9,7 @@ const { CommandExecutionError } = require('../src/exceptions');
 
 const { expect } = chai;
 
-chai.config.truncateThreshold = 0
+chai.config.truncateThreshold = 0;
 
 describe('ProcessList Tests', () => {
   let spawnStub;
@@ -49,17 +49,17 @@ describe('ProcessList Tests', () => {
             scenario.commandOutput.message,
             scenario.commandOutput.code,
           );
-          
+
           ProcessList.getList()
             .then(() => {
-              done('It was expected that getList throws an error')
+              done('It was expected that getList throws an error');
             })
             .catch((error) => {
               // Chai fails when the error and expected error was compared with `deep.equal`
-              expect(error).to.include(expectedError)
+              expect(error).to.include(expectedError);
               done();
             })
-            .catch(done)
+            .catch(done);
 
           spawnStub.stderr.emit('data', Buffer.from(scenario.commandOutput.message));
           spawnStub.emit('close', scenario.commandOutput.code);
@@ -101,20 +101,21 @@ describe('ProcessList Tests', () => {
         });
       });
     });
-  
+
     describe('When the ps command returned result in multiple chunks', () => {
       it('should return the process list expectedly', (done) => {
-        ProcessList.getList()
-            .then((processes) => {
-              expect(processes).to.be.deep.equal(expectedResult);
-              done();
-            })
-            .catch(done);
-
         const expectedResult = expectedResultGenerator.createGetListResultAsObject();
+
+        ProcessList.getList()
+          .then((processes) => {
+            expect(processes).to.be.deep.equal(expectedResult);
+            done();
+          })
+          .catch(done);
+
         const output = commandOutputGenerator.createSuccessfulPsOutput();
 
-        const firstChunkSize = Math.floor(output.message.length / 3);  
+        const firstChunkSize = Math.floor(output.message.length / 3);
         const firstChunk = output.message.substring(0, firstChunkSize);
         const secondChunk = output.message.substring(firstChunkSize, output.message.length);
 

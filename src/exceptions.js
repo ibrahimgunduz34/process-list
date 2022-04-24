@@ -1,13 +1,11 @@
-'use strict';
-
 class CommandExecutionError extends Error {
   constructor(message, output, exitCode) {
-    super(message)
+    super(message);
     this.output = output;
     this.exitCode = exitCode;
   }
 }
 
 module.exports = {
-  CommandExecutionError: CommandExecutionError,
-}
+  CommandExecutionError,
+};
