@@ -7,7 +7,16 @@
     "test": "mocha",
     "lint": "eslint -c .eslintrc.json ."
   },
-  "keywords": [],
+  "keywords": [
+    "system information",
+    "monitoring",
+    "backend",
+    "os",
+    "linux",
+    "osx",
+    "windows",
+    "freebsd"
+  ],
   "author": "Ibrahim Gunduz <ibrahimgunduz34@gmail.com>",
   "license": "ISC",
   "devDependencies": {
