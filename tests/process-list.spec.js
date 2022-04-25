@@ -51,9 +51,7 @@ describe('ProcessList Tests', () => {
           );
 
           ProcessList.getList()
-            .then(() => {
-              done('It was expected that getList throws an error');
-            })
+            .then(() => done('It was expected that getList throws an error'))
             .catch((error) => {
               // Chai fails when the error and expected error was compared with `deep.equal`
               expect(error).to.include(expectedError);
@@ -88,10 +86,8 @@ describe('ProcessList Tests', () => {
       describe(scenario.scenario, () => {
         it(scenario.expectation, (done) => {
           ProcessList.getList({ asArray: scenario.asArray })
-            .then((processes) => {
-              expect(processes).to.be.deep.equal(scenario.expectedResult);
-              done();
-            })
+            .then((processes) => expect(processes).to.be.deep.equal(scenario.expectedResult))
+            .then(() => done())
             .catch(done);
 
           const output = commandOutputGenerator.createSuccessfulPsOutput();
@@ -107,10 +103,8 @@ describe('ProcessList Tests', () => {
         const expectedResult = expectedResultGenerator.createGetListResultAsObject();
 
         ProcessList.getList()
-          .then((processes) => {
-            expect(processes).to.be.deep.equal(expectedResult);
-            done();
-          })
+          .then((processes) => expect(processes).to.be.deep.equal(expectedResult))
+          .then(() => done())
           .catch(done);
 
         const output = commandOutputGenerator.createSuccessfulPsOutput();

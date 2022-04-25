@@ -3,16 +3,20 @@
 
 name: Pull Request Workflow
 
-on: pull_request
+on: [pull_request, push]
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [ '12', '14', '16' ]
+    name: Build For Node ${{ matrix.node }} 
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: ${{ matrix.node }}
       - name: Install Dependencies
         run: npm install
       - name: Check code style
